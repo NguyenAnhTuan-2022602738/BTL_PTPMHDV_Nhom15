@@ -3,6 +3,7 @@ require("dotenv").config();
 
 const database = require("./config/database");
 const route = require("./routes/client/index.route");
+const routeAdmin = require("./routes/admin/index.route");
 
 database.connect();
 
@@ -17,6 +18,7 @@ app.use(express.static("public")); //dùng để public dữ liệu
 
 //routes
 route(app);
+routeAdmin(app);
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)

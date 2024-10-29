@@ -4,7 +4,7 @@ require("dotenv").config();
 
 const route = require("./routes/client/index.route");
 
-mongoose.connect("mongodb://127.0.0.1:27017/BTL_PTPMHDV");
+mongoose.connect(process.env.MONGO_URL);
 
 
 const app = express();

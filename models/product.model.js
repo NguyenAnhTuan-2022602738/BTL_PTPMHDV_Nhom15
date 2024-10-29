@@ -9,8 +9,8 @@ const Car_itemsSchema = new mongoose.Schema(
         vehicle_segment: String,
         engine: String,
         price: String,
-        // imageUrl: Object,
-        // paramater_links: String
+        imageUrl: Array,
+        paramater_links: String
         // deleted: Boolean,
     }
 );

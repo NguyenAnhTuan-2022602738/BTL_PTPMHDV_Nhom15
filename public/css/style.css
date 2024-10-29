@@ -1,3 +1,35 @@
-.test{
-    
+/* Header */
+.header{
+    border-bottom: 1px solid #c4c9cf;
+    padding: 10px 0;
 }
+
+.header .inner-logo a img{
+    max-width: 50px;
+    height: 50px;
+}
+
+.header .inner-menu > ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+
+.header .inner-menu > ul > li{
+    margin-left: 20px;
+}
+/* End header */
+
+/* Footer */
+.footer{
+    background-color: #141414;
+    text-align: center;
+    color: #fefefe;
+    height: 50px;
+    line-height: 50px;
+}
+/* end footer */

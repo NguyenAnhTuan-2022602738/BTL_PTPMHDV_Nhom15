@@ -11,6 +11,7 @@ const Car_itemsSchema = new mongoose.Schema(
         price: String,
         // imageUrl: Object,
         // paramater_links: String
+        // deleted: Boolean,
     }
 );
 

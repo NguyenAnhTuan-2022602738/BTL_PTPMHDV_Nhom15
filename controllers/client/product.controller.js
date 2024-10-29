@@ -1,3 +1,5 @@
+//[GET] /car_items
+
 const Car_items = require("../../models/product.model");
 
 module.exports.index = async (req, res) => {

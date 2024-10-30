@@ -7,11 +7,21 @@ module.exports.index = async (req, res) => {
         deleted: false
     };
 
+    let keyword = "";
+    if(req.query.keyword){
+        keyword = req.query.keyword;
+
+        const regex = new RegExp(keyword, "i");
+
+        find.brand = regex;
+    }
+
     const cars = await Car_items.find(find);
 
     console.log(cars)
     res.render("admin/pages/products/index", {
         pageTitle: "Danh sách xe",
-        Car_items: cars
+        Car_items: cars,
+        keyword: keyword
     });
 };

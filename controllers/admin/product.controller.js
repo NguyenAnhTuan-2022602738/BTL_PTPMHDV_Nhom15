@@ -13,13 +13,32 @@ module.exports.index = async (req, res) => {
     if(objectSearch.regex){
         find.brand = objectSearch.regex;
     };
+    //End Tối ưu tìm kiếm
 
-    const cars = await Car_items.find(find);
 
-    console.log(cars)
+    //pagination
+    let objectPagination = {
+        currentPage: 1,
+        limitItems: 10
+    }
+
+    if(req.query.page){
+        objectPagination.currentPage = parseInt(req.query.page);
+    }
+
+    objectPagination.skip = (objectPagination.currentPage - 1) * objectPagination.limitItems;
+
+    const countCars = await Car_items.countDocuments(find);
+    const totalPage = Math.ceil(countCars / objectPagination.limitItems);
+    objectPagination.totalPage = totalPage;
+    //End pagination
+
+    const cars = await Car_items.find(find).limit(objectPagination.limitItems).skip(objectPagination.skip);
+    
     res.render("admin/pages/products/index", {
         pageTitle: "Danh sách xe",
         Car_items: cars,
-        keyword: objectSearch.keyword
+        keyword: objectSearch.keyword,
+        pagination: objectPagination
     });
 };

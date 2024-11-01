@@ -28,6 +28,7 @@ module.exports.index = async (req, res) => {
         req.query,
         countCars
     );
+    //end pagination
 
   
     const cars = await Car_items.find(find).limit(objectPagination.limitItems).skip(objectPagination.skip);
@@ -39,3 +40,16 @@ module.exports.index = async (req, res) => {
         pagination: objectPagination
     });
 };
+
+//[DELETE] /admin/products/delete/:id
+module.exports.deleteItem = async (req, res) => {
+    const id = req.params.id;
+    try {
+        await Car_items.deleteOne({ _id: id });
+        res.redirect("back"); // Chuyển hướng đến trang danh sách sau khi xóa
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Có lỗi xảy ra khi xóa sản phẩm');
+    }
+
+}
